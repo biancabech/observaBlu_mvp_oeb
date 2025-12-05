@@ -15,6 +15,6 @@ export class DataService {
   }
 
   getIndicadores(): Observable<any> {
-    return this.http.get<any>('/data/indicadores.json');   
+    return this.http.get<any>('/mock-db/indicadores.json');   
   }
 }

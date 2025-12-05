@@ -46,12 +46,20 @@ export class Empresas implements OnInit {
     });
   }
 
+  private normalizar(valor: string = ''): string {
+    // Remove acentos e normaliza para comparação case-insensitive
+    return valor.normalize('NFD').replace(/\p{Diacritic}/gu, '').toLowerCase();
+  }
+
   applyFilters() {
     const { q, minQuantidade, maxQuantidade, minPercentual, maxPercentual } = this.form.value;
+    const qNorm = this.normalizar(q || '');
 
     this.filteredSetores = this.allSetores.filter(item => {
 
-      if (q && !item.setor.toLowerCase().includes(q.toLowerCase())) return false;
+      const setorNorm = this.normalizar(item.setor);
+
+      if (q && !setorNorm.includes(qNorm)) return false;
 
       if (minQuantidade !== null && item.quantidade < minQuantidade) return false;
       if (maxQuantidade !== null && item.quantidade > maxQuantidade) return false;
