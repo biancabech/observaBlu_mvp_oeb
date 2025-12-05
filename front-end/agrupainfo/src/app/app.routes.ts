@@ -1,7 +1,14 @@
-import { Routes } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard/dashboard';
+
+import { Home,  } from './pages/home/home';
+import {  Dashboard} from './pages/dashboard/dashboard';
+import { Filter,  } from './pages/filter/filter';
+import { EmpresasComponent } from './pages/empresas/empresas';
 
 export const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: Home},
+  { path: 'dashboard', component: Dashboard },
+  { path: 'filter', component: Filter },
+  { path: 'empresas', component: EmpresasComponent},
 ];
