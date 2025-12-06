@@ -1,59 +1,162 @@
-# Agrupainfo
+# 📊 **ObservaBlu — MVP do Observatório de Desenvolvimento Econômico de Blumenau**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.13.
+Projeto desenvolvido durante o **Hackathon +Devs2Blu 2025**, com foco em criar um **portal unificado de indicadores econômicos**, reunindo informações dispersas em diversas fontes (IBGE, Prefeitura, CAGED, Receita Federal, etc.).
 
-## Development server
+Este MVP utiliza **Angular 20** e **JSONs mockados** como substitutos temporários da API final.
 
-To start a local development server, run:
+---
+
+## 🚀 **Tecnologias Utilizadas**
+
+### **Front-end**
+
+* Angular 20
+* TypeScript
+* TailwindCSS
+* RxJS
+* Angular Router
+* Angular Reactive Forms
+
+### **Mock de dados**
+
+* Arquivos JSON em `src/assets/data/`
+* Serviço Angular (`DataService`) para leitura dos mockups
+
+---
+
+## 📂 **Estrutura do Projeto**
+
+```
+observaBlu_mvp_oeb/
+│
+├── src/
+│   ├── app/
+│   │   ├── pages/
+│   │   │   ├── home/
+│   │   │   ├── dashboard/
+│   │   │   ├── filter/
+│   │   │   ├── empresas/
+│   │   │   │   ├── empresas.ts
+│   │   │   │   ├── empresas.html
+│   │   │   │   └── empresas.css (se aplicável)
+│   │   ├── services/
+│   │   │   └── data.ts
+│   │   └── app.routes.ts
+│   │
+│   ├── Mock-db/
+│   │       ├── empresas.json
+│   │       ├── empregos.json
+│   │       └── indicadores.json
+│   │
+│   ├── main.ts
+│   ├── styles.css
+│   └── index.html
+│
+├── angular.json
+├── package.json
+└── README.md
+```
+
+---
+
+## 📦 **Como rodar o projeto**
+
+### 1️⃣ Instalar dependências
+
+```bash
+npm install
+```
+
+### 2️⃣ Iniciar servidor local
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+O projeto iniciará em:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200/
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## 📁 **Mock de Dados**
+
+Os arquivos JSON utilizados temporariamente como fonte de dados estão em:
+
+```
+src/mock-db
 ```
 
-## Building
+* `empresas.json`
+* `empregos.json`
+* `indicadores.json`
 
-To build the project run:
+O `DataService` centraliza o acesso aos dados:
 
-```bash
-ng build
+```ts
+getEmpresas() {
+  return this.http.get<any>('assets/data/empresas.json');
+}
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## 🔍 **Funcionalidades do MVP**
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### ✔ Dashboard inicial
 
-```bash
-ng test
+Exibe dados gerais carregados dos mocks.
+
+### ✔ Tela de empresas
+
+* Busca textual
+* Filtros numéricos
+* Filtro por percentual
+* Listagem dinâmica
+* Tudo usando Reactive Forms e debounce
+
+### ✔ Organização modular por páginas
+
+Roteamento configurado em:
+
+```
+app.routes.ts
 ```
 
-## Running end-to-end tests
+### ✔ Design responsivo com TailwindCSS
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## 🧠 **Decisões de Arquitetura**
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+* Uso de JSONs mockados para permitir conclusão do MVP no tempo do Hackathon
+* Arquitetura simples de serviços e páginas independentes
+* Layout limpo focado na exibição de dados
+* Angular 20 (standalone components + router + reactive forms)
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 📅 **Próximos Passos**
+
+* Criar backend Spring Boot real consumindo APIs públicas
+* Substituir JSON mock por endpoints reais
+* Implementar agregação automática de dados
+* Criar gráficos com bibliotecas (ng-apexcharts, ngx-echarts, charts.js)
+* Autenticação e níveis de acesso
+* Exportação de relatórios em PDF/Excel
+
+---
+
+## 👥 **Equipe ObservaBlu**
+
+Projeto da equipe **ObservaBlu**, desafio 13 do Hackathon.
+
+---
+
+## 📝 Licença
+
+Uso acadêmico e demonstrativo para o Hackathon +Devs2Blu.
+
+---
